@@ -29,13 +29,13 @@ FREEMAIL_PROVIDERS = load_freemail_blacklist()
 
 
 @app.get("/")
-@limiter.limit("5/minute")
+@limiter.limit("500/minute")
 async def root(request: Request):
     return {"message": "Hello World"}
 
 
 @app.get('/extract')
-@limiter.limit("60/minute")
+@limiter.limit("600/minute")
 async def domain(url: str, request: Request,response: Response):
     url = sanitize_url(url)
     
